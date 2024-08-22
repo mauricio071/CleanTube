@@ -103,7 +103,7 @@ async function onSubmit(event: FormSubmitEvent<any>) {
             body: state
         })
         isOpen.value = false
-        router.push('/videos')
+        router.push('/')
         $toast.success("Vídeo atualizado!")
     } catch (error) {
         $toast.error("Erro ao atualizar o vídeo")
@@ -116,7 +116,7 @@ async function excluirVideo(event: FormSubmitEvent<any>) {
             method: "DELETE"
         })
         isOpen.value = false
-        router.push('/videos')
+        router.push('/')
         $toast.success("Vídeo excluído!")
     } catch (error) {
         $toast.error("Erro ao excluir o vídeo")

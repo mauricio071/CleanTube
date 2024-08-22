@@ -1,10 +1,39 @@
 <template>
-    <div class="text-5xl text-center">Página Inicial</div>
+    <div>
+        <h1 class="text-4xl text-center mb-16">{{ $t('titulo') }}</h1>
+        <div class="grid grid-cols-2 lg:grid-cols-3 items-center justify-center gap-4">
+            <UCard v-for="video in videos" :key="video.id">
+                <template #header>
+                    {{ video.descricao }}
+                </template>
+
+                <p v-data-horario>{{ video.data_postagem }}</p>
+                <iframe :src="video.url" frameborder="0" title="Youtube vídeo" class="w-full h-48" />
+
+                <template #footer>
+                    <div class="flex justify-between">
+                        <UButton @click="favoritar(video)">Adicionar Favorito</UButton>
+                        <nuxt-link :to="{
+                            name: 'videos-id',
+                            params: { id: video.id.toString() }
+                        }">
+                            <UButton label="Ver vídeo" color="gray">
+                                <template #trailing>
+                                    <UIcon name="i-heroicons-arrow-right-20-solid" />
+                                </template>
+                            </UButton>
+                        </nuxt-link>
+                    </div>
+                </template>
+            </UCard>
+        </div>
+    </div>
 </template>
 
-<script setup>
-// const { user } = useUserSession();
-const titulo = "Home";
+<script setup lang="ts">
+import type { Video } from "@/interfaces/video"
+
+const titulo = "Meus Vídeos";
 
 useHead({
     title: titulo,
@@ -15,4 +44,25 @@ useHead({
         },
     ],
 });
+
+// const favoritos = useFavoritos()
+const { adicionarFavorito } = useVideoStore();
+
+const { $toast } = useNuxtApp()
+// const { locale } = useI18n()
+
+// const videos = ref<Video[]>([])
+
+const { data: videos, error } = await useFetch("/api/v1/videos")
+
+const favoritar = (video: Video) => {
+    adicionarFavorito(video)
+    $toast.success('Favoritado com sucesso!')
+}
+
+onMounted(async () => {
+    if (error.value) {
+        $toast.error(error.value.statusMessage || "")
+    }
+})
 </script>

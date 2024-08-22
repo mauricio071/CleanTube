@@ -23,7 +23,7 @@ async function onSubmit(event: FormSubmitEvent<any>) {
             method: "POST",
             body: state
         })
-        router.push('/videos')
+        router.push('/')
         $toast.success("Vídeo adicionado!")
     } catch (error) {
         $toast.error("Erro ao adicionar o vídeo")
