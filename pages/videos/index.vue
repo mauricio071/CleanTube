@@ -37,8 +37,11 @@ import type { Video } from "@/interfaces/video"
 const { adicionarFavorito } = useVideoStore();
 
 const { $toast } = useNuxtApp()
+// const { locale } = useI18n()
 
-const videos = ref<Video[]>([])
+// const videos = ref<Video[]>([])
+
+const { data: videos, error } = await useFetch("/api/v1/videos")
 
 const favoritar = (video: Video) => {
     adicionarFavorito(video)
@@ -46,7 +49,9 @@ const favoritar = (video: Video) => {
 }
 
 onMounted(async () => {
-    videos.value = await $fetch('/api/v1/videos')
+    if (error.value) {
+        $toast.error(error.value.statusMessage || "")
+    }
 })
 </script>
 

@@ -21,27 +21,12 @@
             </div>
             <div :class="{ hidden: !isOpen, block: isOpen }"
                 class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
-                <div class="text-sm lg:flex-grow">
-                    <nuxt-link to="/" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
-                        Home
-                    </nuxt-link>
-                    <nuxt-link to="/videos"
-                        class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
-                        Vídeos
-                    </nuxt-link>
-                    <nuxt-link to="/videos/adicionar"
-                        class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
-                        Adicionar Videos
-                    </nuxt-link>
-                    <nuxt-link to="/videos/favoritos"
-                        class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
-                        Favoritos
-                    </nuxt-link>
-                    <!-- <nuxt-link to="/clientes"
-                        class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
-                        Clientes
-                    </nuxt-link> -->
-                </div>
+                <NuxtLink v-for="rota in rotasSistemas()" :key="rota.nome" :to="rota.path"
+                    class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
+                    {{ rota.nome }}
+                </NuxtLink>
+            </div>
+            <div class="flex items-center space-x-4">
                 <ClientOnly>
                     <UButton :icon="isDark ? 'i-heroicons-moon-20-solid' : 'i-heroicons-sun-20-solid'" color="gray"
                         variant="ghost" aria-label="Theme" @click="isDark = !isDark" />
@@ -49,10 +34,13 @@
                         <div class="w-8 h-8" />
                     </template>
                 </ClientOnly>
-                <select v-model="locale" class="ml-8">
+                <select v-model="locale">
                     <option value="pt">pt</option>
                     <option value="en">en</option>
                 </select>
+                <ClientOnly v-if="loggedIn">
+                    <LayoutUsuario />
+                </ClientOnly>
             </div>
         </nav>
         <UContainer class="my-16">
@@ -65,7 +53,8 @@
 <script setup lang="ts">
 const { locale } = useI18n();
 const isOpen = ref(false);
-// const { loggedIn } = useUserSession();
+const { loggedIn } = useUserSession();
+console.log(loggedIn)
 
 const colorMode = useColorMode()
 const isDark = computed({

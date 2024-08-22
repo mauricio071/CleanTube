@@ -55,13 +55,31 @@ import type { FormError, FormSubmitEvent } from '#ui/types'
 
 const route = useRoute()
 
+const { id } = route.params
+
+const { data: video } = await useFetch<Video>(`/api/v1/videos/${id}`);
+
+// useSeoMeta({
+//     title: "Nuxt - SEO e META",
+//     ogDescription: video.value?.descricao || "",
+//     ogUrl: video.value?.url || "",
+//     ogType: "video.other",
+// });
+
+if (!video.value) {
+    throw createError({
+        statusCode: 404,
+        statusMessage: "Vídeo não encontrado",
+    });
+}
+
 const router = useRouter()
 
 const { $toast } = useNuxtApp()
 
 const idParams = computed(() => route.params.id)
 
-const video = ref<Video>({} as Video)
+// const video = ref<Video>({} as Video)
 
 const isOpen = ref(false)
 

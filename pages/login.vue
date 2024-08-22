@@ -1,23 +1,31 @@
 <template>
-    <div>
-        Login
-        <button @click="logar">Login</button>
-        <button @click="desLogar">Deslogar</button>
-    </div>
+    <UCard>
+        <template #header>
+            <h1 class="text-2xl text-center">Faça login para acessar a plataforma</h1>
+        </template>
+        <div class="space-y-4">
+            <a href="/auth/google" class="block">
+                <UButton block label="Login com o Google" color="gray" size="lg">
+                    <template #leading>
+                        <IconGoogle />
+                    </template>
+                </UButton>
+            </a>
+            <a href="/auth/oauth0" class="block">
+                <UButton block label="Login com o OAuth" color="gray" size="lg">
+                    <template #leading>
+                        <IconOauth0 />
+                    </template>
+                </UButton>
+            </a>
+        </div>
+    </UCard>
 </template>
 
 <script setup>
-const login = useCookie('login')
-
-const logar = () => {
-    login.value = 'logado!'
-}
-
-const desLogar = () => {
-    login.value = 'deslogado!'
-}
+definePageMeta({
+    layout: "auth",
+});
 </script>
 
-<style  scoped>
-
-</style>
+<style lang="scss" scoped></style>
