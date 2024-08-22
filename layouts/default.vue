@@ -54,7 +54,6 @@
 const { locale } = useI18n();
 const isOpen = ref(false);
 const { loggedIn } = useUserSession();
-console.log(loggedIn)
 
 const colorMode = useColorMode()
 const isDark = computed({

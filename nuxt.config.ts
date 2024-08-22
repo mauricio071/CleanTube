@@ -32,7 +32,7 @@ export default defineNuxtConfig({
   security: {
     headers: {
       xFrameOptions: false,
-      crossOriginEmbedderPolicy: process.env.NODE_ENV === 'development' ? 'unsafe-none' : 'require-corp',
+      crossOriginEmbedderPolicy: 'unsafe-none',
     },
   },
   runtimeConfig: {

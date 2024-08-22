@@ -1,6 +1,5 @@
 export default oauthGoogleEventHandler({
     async onSuccess(event, { user, tokens }) {
-        console.log(user);
         await setUserSession(event, {
             user: {
                 id: user.id,
