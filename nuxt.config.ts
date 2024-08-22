@@ -32,7 +32,10 @@ export default defineNuxtConfig({
   security: {
     headers: {
       xFrameOptions: false,
-      crossOriginEmbedderPolicy: 'unsafe-none',
+      // crossOriginEmbedderPolicy: process.env.NODE_ENV === 'development' ? 'unsafe-none' : 'require-corp',
+
+      //Para poder acessar o login do google e oauth0
+      crossOriginEmbedderPolicy: 'require-corp',
     },
   },
   runtimeConfig: {
