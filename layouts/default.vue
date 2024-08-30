@@ -26,6 +26,7 @@
                     {{ rota.nome }}
                 </NuxtLink>
             </div>
+
             <div class="flex items-center space-x-4">
                 <ClientOnly>
                     <UButton :icon="isDark ? 'i-heroicons-moon-20-solid' : 'i-heroicons-sun-20-solid'" color="gray"
