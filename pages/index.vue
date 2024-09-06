@@ -6,9 +6,6 @@
                 <template #header>
                     {{ video.descricao }}
                 </template>
-
-                <p v-data-horario>{{ video.data_postagem }}</p>
-
                 <iframe :src="formatarUrl(video.url)" frameborder="0" title="Youtube vídeo"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                     referrerpolicy="strict-origin-when-cross-origin" allowfullscreen class="w-full h-48" />
@@ -36,7 +33,7 @@
 <script setup lang="ts">
 import type { Video } from "@/interfaces/video"
 
-const titulo = "Meus Vídeos";
+const titulo = "Todos os vídeos";
 
 useHead({
     title: titulo,

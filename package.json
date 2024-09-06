@@ -13,6 +13,7 @@
     "@nuxt/ui": "^2.18.4",
     "@nuxtjs/i18n": "^8.5.0",
     "@pinia/nuxt": "^0.5.3",
+    "@prisma/client": "^5.19.1",
     "@types/pg": "^8.11.8",
     "nuxt": "^3.12.4",
     "nuxt-auth-utils": "^0.3.4",
@@ -24,6 +25,7 @@
     "vue": "latest"
   },
   "devDependencies": {
-    "@pinia-plugin-persistedstate/nuxt": "^1.2.1"
+    "@pinia-plugin-persistedstate/nuxt": "^1.2.1",
+    "prisma": "^5.19.1"
   }
 }

@@ -3,7 +3,10 @@
         <nav class="flex items-center justify-between flex-wrap bg-teal-500 p-6">
             <div class="flex items-center flex-shrink-0 text-white mr-6">
                 <NuxtLink to="/">
-                    <span class="font-semibold text-xl tracking-tight">Mauricio</span>
+                    <span class="flex items-center gap-2 font-semibold text-xl tracking-tight">
+                        <IconYoutube class="w-8 h-8" />
+                        CleanTube
+                    </span>
                 </NuxtLink>
             </div>
             <div class="block lg:hidden">
@@ -19,42 +22,44 @@
                     </svg>
                 </button>
             </div>
-            <div :class="{ hidden: !isOpen, block: isOpen }"
-                class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
-                <NuxtLink v-for="rota in rotasSistemas()" :key="rota.nome" :to="rota.path"
-                    class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
-                    {{ rota.nome }}
-                </NuxtLink>
-            </div>
-
-            <div class="flex items-center space-x-4">
-                <ClientOnly>
-                    <UButton :icon="isDark ? 'i-heroicons-moon-20-solid' : 'i-heroicons-sun-20-solid'" color="gray"
-                        variant="ghost" aria-label="Theme" @click="isDark = !isDark" />
-                    <template #fallback>
-                        <div class="w-8 h-8" />
-                    </template>
-                </ClientOnly>
-                <select v-model="locale">
-                    <option value="pt">pt</option>
-                    <option value="en">en</option>
-                </select>
-                <ClientOnly v-if="loggedIn">
-                    <LayoutUsuario />
-                </ClientOnly>
+            <div :class="{ hidden: !isOpen, block: isOpen }" class="w-full block lg:flex lg:items-center lg:w-auto">
+                <div v-for="rota in rotasSistemas()" :key="rota.nome" class="text-sm">
+                    <NuxtLink v-if="!rota.permissao || rota.permissao === user?.permissao" :to="rota.path"
+                        class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
+                        {{ rota.nome }}
+                    </NuxtLink>
+                </div>
+                <div class="flex items-center space-x-4 w-full pt-4 lg:w-[unset] lg:flex lg:pt-[unset]"
+                    :class="{ hidden: !isOpen, block: isOpen }">
+                    <ClientOnly>
+                        <UButton :icon="isDark ? 'i-heroicons-moon-20-solid' : 'i-heroicons-sun-20-solid'" color="gray"
+                            variant="ghost" aria-label="Theme" @click="isDark = !isDark" />
+                        <template #fallback>
+                            <div class="w-8 h-8" />
+                        </template>
+                    </ClientOnly>
+                    <select v-model="locale">
+                        <option value="pt">pt</option>
+                        <option value="en">en</option>
+                    </select>
+                    <ClientOnly v-if="loggedIn">
+                        <LayoutUsuario />
+                    </ClientOnly>
+                </div>
             </div>
         </nav>
         <UContainer class="my-16">
             <slot></slot>
         </UContainer>
-        <UDivider label="Maurício Naoki" :ui="{ label: 'text-primary-500 dark:text-primary-400' }" />
+
+        <UDivider label="&copy; Maurício Naoki" :ui="{ label: 'text-primary-500 dark:text-primary-400' }" />
     </div>
 </template>
 
 <script setup lang="ts">
 const { locale } = useI18n();
 const isOpen = ref(false);
-const { loggedIn } = useUserSession();
+const { loggedIn, user } = useUserSession();
 
 const colorMode = useColorMode()
 const isDark = computed({
@@ -62,7 +67,7 @@ const isDark = computed({
         return colorMode.value === 'dark'
     },
     set() {
-        colorMode.preference = colorMode.value === 'dark' ? 'light' : 'dark'
+        colorMode.preference = colorMode.value === 'dark' ? 'dark' : 'light'
     }
 })
 

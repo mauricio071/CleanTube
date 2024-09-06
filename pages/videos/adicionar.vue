@@ -1,6 +1,12 @@
 <script setup lang="ts">
 import type { FormError, FormSubmitEvent } from '#ui/types'
 
+definePageMeta({
+    permissao: "ADMINISTRADOR"
+})
+
+const { user } = useUserSession()
+
 const router = useRouter()
 
 const { $toast } = useNuxtApp()
@@ -21,7 +27,10 @@ async function onSubmit(event: FormSubmitEvent<any>) {
     try {
         await $fetch('/api/v1/videos', {
             method: "POST",
-            body: state
+            body: {
+                ...state,
+                usuarioId: user.value?.usuarioId
+            }
         })
         router.push('/')
         $toast.success("Vídeo adicionado!")
@@ -33,16 +42,16 @@ async function onSubmit(event: FormSubmitEvent<any>) {
 
 <template>
     <UForm :validate="validate" :state="state" @submit="onSubmit">
-        <UFormGroup label="descricao" name="descricao" class="mb-4">
+        <UFormGroup label="Descrição" name="descricao" class="mb-4">
             <UInput v-model="state.descricao" />
         </UFormGroup>
 
-        <UFormGroup label="url" name="url" class="mb-4">
+        <UFormGroup label="URL" name="url" class="mb-4">
             <UInput v-model="state.url" type="url" />
         </UFormGroup>
 
         <UButton type="submit">
-            Enviar
+            Salvar
         </UButton>
     </UForm>
 </template>

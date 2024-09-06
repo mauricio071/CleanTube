@@ -1,33 +1,46 @@
 import { Video } from "~/interfaces/video";
 import { postgresClient } from "../utils";
 import { H3Event } from "h3"
+import { PrismaClient } from "@prisma/client";
 
-const { client } = postgresClient();
+const prisma = new PrismaClient()
 
 export const buscaVideos = async () => {
-    const resultado = await client.query("SELECT * FROM videos ORDER BY descricao DESC")
-
-    return resultado.rows as Video[]
+    return await prisma.video.findMany({
+        orderBy: {
+            descricao: "desc"
+        }
+    })
 }
 
-export const buscaVideoPorId = async (event: H3Event) => {
-    const requestId = (await event.context.params?.id) as string
+export const buscaPorId = async (event: H3Event) => {
+    const request = getRouterParams(event)
 
-    const resultado = await client.query("SELECT * FROM videos where id = $1", [
-        requestId
-    ])
+    if (!request.id) {
+        throw createError({
+            statusCode: 400,
+            name: "Vídeo inválido"
+        })
+    }
 
-    return resultado.rows[0] as Video[]
+    const video = await prisma.video.findFirst({
+        where: {
+            id: Number(request.id)
+        }
+    })
+
+    return !video ? "Vídeo não encontrado" : video;
 }
 
 export const addVideo = async (event: H3Event): Promise<string> => {
     try {
-        const request = await readBody(event)
+        const request = await readBody<Video>(event)
 
-        await client.query(
-            "INSERT INTO videos (descricao, url, data_postagem) VALUES ($1, $2, CURRENT_DATE)",
-            [request.descricao, request.url]
-        )
+        await prisma.video.create({
+            data: {
+                ...request,
+            }
+        })
         return "Vídeo adicionado com sucesso!"
     } catch (err) {
         throw createError({
@@ -39,12 +52,27 @@ export const addVideo = async (event: H3Event): Promise<string> => {
 
 export const atualizaVideo = async (event: H3Event): Promise<string> => {
     try {
-        const request = await readBody(event)
+        const requestBody = await readBody(event)
 
-        await client.query(
-            "UPDATE videos SET descricao = $1, url = $2, data_postagem = CURRENT_DATE WHERE id = $3",
-            [request.descricao, request.url, request.id]
-        )
+        const request = getRouterParams(event)
+
+        if (!request.id) {
+            throw createError({
+                statusCode: 400,
+                name: "Vídeo inválido"
+            })
+        }
+
+        await prisma.video.update({
+            where: {
+                id: Number(request.id)
+            },
+            data: {
+                descricao: requestBody.descricao,
+                url: requestBody.urls
+            }
+        })
+
         return "Vídeo atualizado com sucesso!"
     } catch (err) {
         throw createError({
@@ -56,11 +84,20 @@ export const atualizaVideo = async (event: H3Event): Promise<string> => {
 
 export const deletarVideoPorId = async (event: H3Event) => {
     try {
-        const requestId = (await event.context.params?.id) as string
+        const request = getRouterParams(event)
 
-        const resultado = await client.query("DELETE FROM videos WHERE id = $1", [
-            requestId
-        ])
+        if (!request.id) {
+            throw createError({
+                statusCode: 400,
+                name: "Vídeo inválido"
+            })
+        }
+
+        await prisma.video.delete({
+            where: {
+                id: Number(request.id)
+            },
+        })
 
         return "Vídeo deletado com sucesso!"
     } catch (err) {
