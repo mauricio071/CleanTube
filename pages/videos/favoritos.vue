@@ -8,7 +8,10 @@
                 </template>
 
                 <p>{{ converteDataBrasil(video.data_postagem) }}</p>
-                <iframe :src="video.url" frameborder="0" title="Youtube vídeo" class="w-full h-48" />
+                <iframe :src="formatarUrl(video.url)"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen frameborder="0"
+                    title="Youtube vídeo" class="w-full h-48" />
 
                 <template #footer>
                     <UButton @click="removerFavorito(video.id)" color="red">Remover Favorito</UButton>

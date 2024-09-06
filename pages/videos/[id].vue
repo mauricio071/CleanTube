@@ -1,10 +1,5 @@
 <template>
     <div>
-        <!-- Voce está vendo o id:{{ idParams }} -->
-        <!-- <Header /> -->
-        <!-- <VideoDetalhes />
-        <VideoControlePlay />
-        <IconPlay /> -->
         <div>
             <UModal v-model="isOpen">
                 <div class="p-4">
@@ -38,8 +33,11 @@
                 </div>
             </template>
 
-            <!-- <p v-data-horario>{{ video.data_postagem }}</p> -->
-            <iframe :src="video.url" frameborder="0" title="Youtube vídeo" class="w-full h-[500px]" />
+            <p v-data-horario>{{ video.data_postagem }}</p>
+            <iframe :src="formatarUrl(video.url)"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen frameborder="0" title="Youtube vídeo"
+                class="w-full h-[500px]" />
         </UCard>
     </div>
 </template>
@@ -58,13 +56,6 @@ const route = useRoute()
 const { id } = route.params
 
 const { data: video } = await useFetch<Video>(`/api/v1/videos/${id}`);
-
-// useSeoMeta({
-//     title: "Nuxt - SEO e META",
-//     ogDescription: video.value?.descricao || "",
-//     ogUrl: video.value?.url || "",
-//     ogType: "video.other",
-// });
 
 if (!video.value) {
     throw createError({

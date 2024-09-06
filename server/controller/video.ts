@@ -5,7 +5,7 @@ import { H3Event } from "h3"
 const { client } = postgresClient();
 
 export const buscaVideos = async () => {
-    const resultado = await client.query("SELECT * FROM videos ORDER BY descricao ASC")
+    const resultado = await client.query("SELECT * FROM videos ORDER BY descricao DESC")
 
     return resultado.rows as Video[]
 }

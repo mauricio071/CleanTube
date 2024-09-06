@@ -25,28 +25,11 @@ export default defineNuxtConfig({
       {
         vueI18n: './i18n'
       }
-    ], "@nuxt/ui", "nuxt-auth-utils", "nuxt-security"],
+    ], "@nuxt/ui", "nuxt-auth-utils"],
   pinia: {
     storesDirs: ["./stores/**"]
   },
-  security: {
-    headers: {
-      // xFrameOptions: false,
-      // crossOriginEmbedderPolicy: process.env.NODE_ENV === 'development' ? 'unsafe-none' : 'require-corp',
-
-      //Para poder acessar o login do google e oauth0
-      // crossOriginEmbedderPolicy: 'require-corp',
-      contentSecurityPolicy: {
-        'img-src': ["'self'", "data:", 'https://reqres.in/img/faces/', "https://lh3.googleusercontent.com/", 'https://gc.kis.v2.scr.kaspersky-labs.com/'],
-      },
-    },
-  },
   runtimeConfig: {
-    session: {
-      cookie: {
-        sameSite: 'lax'
-      }
-    },
     oauth: {
       Google: {
         clientId: process.env.NUXT_OAUTH_GOOGLE_CLIENT_ID,
