@@ -6,8 +6,8 @@ export default defineI18nConfig(() => ({
     messages: {
         pt,
         en: {
-            titulo: "My videos",
-            tituloFavorito: "My favorites"
+            titulo: "All videos",
+            tituloFavorito: "Favorites"
         }
     }
 }))

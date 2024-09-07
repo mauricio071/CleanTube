@@ -1,6 +1,10 @@
 <script setup lang="ts">
 import type { FormError, FormSubmitEvent } from '#ui/types'
 
+definePageMeta({
+    permissao: "ADMIN"
+})
+
 const router = useRouter()
 
 const { $toast } = useNuxtApp()
@@ -33,11 +37,11 @@ async function onSubmit(event: FormSubmitEvent<any>) {
 
 <template>
     <UForm :validate="validate" :state="state" @submit="onSubmit">
-        <UFormGroup label="descricao" name="descricao" class="mb-4">
+        <UFormGroup label="Descrição" name="descricao" class="mb-4">
             <UInput v-model="state.descricao" />
         </UFormGroup>
 
-        <UFormGroup label="url" name="url" class="mb-4">
+        <UFormGroup label="URL" name="url" class="mb-4">
             <UInput v-model="state.url" type="url" />
         </UFormGroup>
 

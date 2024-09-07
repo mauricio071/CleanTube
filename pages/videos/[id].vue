@@ -24,7 +24,7 @@
             <template #header>
                 <div class="flex justify-between">
                     <p>{{ video.descricao }}</p>
-                    <div class="space-x-4">
+                    <div v-if="verificarLogin" class="space-x-4">
                         <UButton @click="abrirModal" icon="i-heroicons-pencil-square" size="sm" color="primary"
                             variant="solid" label="Editar" :trailing="false" />
                         <UButton @click="excluirVideo" icon="i-heroicons-trash" size="sm" color="red" variant="solid"
@@ -44,7 +44,10 @@
 
 <script setup lang="ts">
 import type { Video } from '~/interfaces/video';
-import type { FormError, FormSubmitEvent } from '#ui/types'
+import type { FormError, FormSubmitEvent } from '#ui/types';
+const { user } = useUserSession();
+
+const verificarLogin = user.value.email === 'naokimau@gmail.com'
 
 // definePageMeta({
 //     layout: 'exibicao',
