@@ -12,26 +12,6 @@ const items = [
     ],
     [
         {
-            label: "Settings",
-            icon: "i-heroicons-cog-8-tooth",
-        },
-    ],
-    [
-        {
-            label: "Documentation",
-            icon: "i-heroicons-book-open",
-        },
-        {
-            label: "Changelog",
-            icon: "i-heroicons-megaphone",
-        },
-        {
-            label: "Status",
-            icon: "i-heroicons-signal",
-        },
-    ],
-    [
-        {
             label: "Sair",
             icon: "i-heroicons-arrow-left-on-rectangle",
             click: () => {
