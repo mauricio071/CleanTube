@@ -23,7 +23,7 @@
                 </button>
             </div>
             <div :class="{ hidden: !isOpen, block: isOpen }" class="w-full block lg:flex lg:items-center lg:w-auto">
-                <div v-for="rota in rotasSistemas()" :key="rota.nome" class="text-sm">
+                <div v-for="rota in rotasSistemas()" :key="rota.nome">
                     <NuxtLink v-if="!rota.permitido || rota.permitido === user.email" :to="rota.path"
                         class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
                         {{ rota.nome }}
