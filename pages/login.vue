@@ -11,13 +11,14 @@
                     </template>
                 </UButton>
             </a>
-            <a href="/auth/oauth0" class="block">
+            <!-- Opção para conectar com oauth0 -->
+            <!-- <a href="/auth/oauth0" class="block">
                 <UButton block label="Login com o OAuth" color="gray" size="lg">
                     <template #leading>
                         <IconOauth0 />
                     </template>
                 </UButton>
-            </a>
+            </a> -->
         </div>
     </UCard>
 </template>
