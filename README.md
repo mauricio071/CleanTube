@@ -113,7 +113,7 @@ NUXT_OAUTH_GOOGLE_CLIENT_ID=SEU-CLIENT-ID
 NUXT_OAUTH_GOOGLE_CLIENT_SECRET=SEU-CLIENT-SECRET
 ```
 
-### 4. Inicialize o projeto:
+### 5. Inicialize o projeto:
 
 ```bash 
 $ npm run dev
