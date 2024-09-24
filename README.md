@@ -19,11 +19,11 @@ Os layouts foram criados utilizando o Nuxt UI, que fornece templates prontos par
 Os vídeos favoritos são armazenados localmente no navegador, permitindo fácil acesso posterior, e os vídeos são exibidos sem anúncios. Além disso, a aplicação conta com i18n, permitindo a alteração do idioma dos títulos das seções conforme a preferência do usuário.
 
 ## 🚀 Funcionalidades Principais
-- Autenticação com Google OAuth: Acesso seguro utilizando a conta Google
-- Gerenciamento de vídeos: Adicione, edite ou exclua vídeos da sua conta
-- Favoritos: Armazene seus vídeos favoritos localmente para fácil acesso
-- Modo sem anúncios: Exibição de vídeos sem interrupções de anúncios
-- Proteção de rotas: Middleware de autenticação para impedir acesso de usuários não autenticados
+- **Autenticação com Google OAuth**: Acesso seguro utilizando a conta Google
+- **Gerenciamento de vídeos**: Adicione, edite ou exclua vídeos da sua conta
+- **Favoritos**: Armazene seus vídeos favoritos localmente para fácil acesso
+- **Modo sem anúncios**: Exibição de vídeos sem interrupções de anúncios
+- **Proteção de rotas**: Middleware de autenticação para impedir acesso de usuários não autenticados
 
 ## 🛠 Tecnologias utilizadas
 
