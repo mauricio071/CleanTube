@@ -24,6 +24,7 @@ Além disso, a aplicação conta com i18n, permitindo a alteração do idioma do
 -   **Nuxt.js** - Framework baseado em Vue.js para SSR
 -   **Nuxt UI** - Conjunto de componentes prontos para criação de interfaces
 -   **Pinia** - Biblioteca de gerenciamento de estado
+-   **i18n** - Biblioteca para internacionalização
 -   **Nitro** - Camada de servidor do Nuxt para backends e APIs
 -   **TypeScript** - Linguagem com tipagem estática para código mais seguro
 -   **JavaScript** - Linguagem de programação
