@@ -125,7 +125,7 @@ $ npm run dev
 toda vez que inicializar o projeto, será gerado um novo NUXT_SESSION_PASSWORD. Você pode definir um valor aleatório no .env:
 
 ```bash 
-NUXT_SESSION_PASSWORD=CARACTERES-ALEATÓRIAS
+NUXT_SESSION_PASSWORD=CARACTERES-ALEATORIAS
 ```
 
 Agora você pode acessar o projeto no navegador em http://localhost:3000 (ou na porta indicada pelo terminal).
