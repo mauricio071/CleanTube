@@ -2,6 +2,14 @@
 
 <p align="center">Aplicação para gerenciamento de vídeos do YouTube, com autenticação via Google OAuth</p>
 
+<p align="center">
+  <img alt="Github Language Count" src="https://img.shields.io/github/languages/count/mauricio071/CleanTube?color=00bfa6">
+  <img width="1" />
+  <img alt="Github Top Language" src="https://img.shields.io/github/languages/top/mauricio071/CleanTube?color=00bfa6">
+  <img width="1" />
+  <img alt="Repository Size" src="https://img.shields.io/github/repo-size/mauricio071/CleanTube?color=00bfa6">
+</p>
+
 ## 📝 Sobre o projeto
 
 CleanTube é uma aplicação que permite gerenciar vídeos do YouTube. A autenticação foi implementada via Google OAuth, configurada pelo Google Cloud, garantindo que somente usuários autenticados possam adicionar, editar ou excluir vídeos. Além disso, foi utilizado o middleware do Nuxt.js para proteger as páginas, impedindo o acesso de usuários não logados.
@@ -14,7 +22,9 @@ Além disso, a aplicação conta com i18n, permitindo a alteração do idioma do
 
 -   **Vue.js** - Framework JavaScript progressivo
 -   **Nuxt.js** - Framework baseado em Vue.js para SSR
+-   **Nuxt UI** - Conjunto de componentes prontos para criação de interfaces
 -   **Pinia** - Biblioteca de gerenciamento de estado
+-   **Nitro** - Camada de servidor do Nuxt para backends e APIs
 -   **TypeScript** - Linguagem com tipagem estática para código mais seguro
 -   **JavaScript** - Linguagem de programação
 -   **HTML** - Estrutura do conteúdo
