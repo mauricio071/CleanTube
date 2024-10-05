@@ -1,7 +1,7 @@
 <div align="center"> <h1>CleanTube</h1> </div>
 
 <p align="center">Aplicação para gerenciamento de vídeos do YouTube, com autenticação via Google OAuth</p>
- 
+
 <p align="center">
   <img alt="Github Language Count" src="https://img.shields.io/github/languages/count/mauricio071/CleanTube?color=00bfa6">
   <img width="1" />
