@@ -34,9 +34,9 @@ Os vídeos favoritos são armazenados localmente no navegador, permitindo fácil
 -   **i18n** - Biblioteca para internacionalização
 -   **Nitro** - Camada de servidor do Nuxt para backends e APIs
 -   **TypeScript** - Linguagem com tipagem estática para código mais seguro
--   **JavaScript** - Linguagem de programação
--   **HTML** - Estrutura do conteúdo
--   **CSS** - Estilização da interface
+-   **JavaScript** - Linguagem de programação para desenvolvimento web
+-   **HTML** - Linguagem de marcação que estrutura o conteúdo na web
+-   **CSS** - Linguagem de estilos usada para definir o visual das interfaces web
 -   **Tailwind CSS** - Framework de estilos
 -   **PostgreSQL** - Banco de dados relacional
 
