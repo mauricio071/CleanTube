@@ -14,7 +14,7 @@
 
 CleanTube é uma aplicação que permite gerenciar vídeos do YouTube. A autenticação foi implementada via Google OAuth, configurada pelo Google Cloud, garantindo que somente usuários autorizados possam adicionar, editar ou excluir vídeos. Além disso, foi utilizado o middleware do Nuxt.js para proteger as páginas, impedindo o acesso de usuários não logados.
 
-Os layouts foram criados utilizando o Nuxt UI, que fornece templates prontos para acelerar o desenvolvimento. O backend foi configurado com Nitro, integrado ao Nuxt 3, facilitando a implementação de rotas e funções server-side. Para o gerenciamento de dados, foi utilizado o PostgreSQL como sistema de gerenciamento de banco de dados relacional. 
+Os layouts foram criados utilizando o Nuxt UI, que fornece templates prontos para acelerar o desenvolvimento. O backend foi configurado com Nitro, integrado ao Nuxt 3, facilitando a implementação de rotas e funções server-side.
 
 Os vídeos favoritos são armazenados localmente no navegador, permitindo fácil acesso posterior, e os vídeos são exibidos sem anúncios. Além disso, a aplicação conta com i18n, permitindo a alteração do idioma dos títulos das seções conforme a preferência do usuário.
 
